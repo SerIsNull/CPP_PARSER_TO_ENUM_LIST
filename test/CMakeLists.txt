@@ -4,10 +4,12 @@
 	set( SOURCES
 	     parser_to_enum_list.cpp
 	     main_gtest.cpp
+		 fixture_gtest.cpp
 	)
 
-	set( HEADERS 
-	     parser_to_enum_list.h	     
+	set( HEADERS
+	     parser_to_enum_list.h
+	     fixture_gtest.h
 	)
 
 # set test target
@@ -24,6 +26,7 @@
 # set include dir for the test target
 	target_include_directories( test_parser PRIVATE
 				    ${CMAKE_SOURCE_DIR}/src
+				    ${CMAKE_CURRENT_SOURCE_DIR}
 	)
 
 # set output directory
