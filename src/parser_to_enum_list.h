@@ -15,9 +15,11 @@ namespace Lib_parser {
 	// This type is part of result
 	class Node {
 		public:
-			Node *m_ptr_down  { nullptr },
-			     *m_ptr_up    { nullptr },
-			     *m_ptr_right { nullptr };
+			Node     *m_ptr_down  { nullptr },
+			         *m_ptr_up    { nullptr },
+			         *m_ptr_right { nullptr };
+            data_t   m_data      {""};
+            number_t m_number    {""};
 	};
 
 	class Tokens_stream {
@@ -38,7 +40,28 @@ namespace Lib_parser {
 			operator bool() { return m_ss.good(); }
 		private:
 			std::basic_stringstream< data_t::value_type> m_ss;
-
 	}; // end type Token_stream
+    
+// This type creates the tree depending on the nested level of the token.
+    class List {
+        public:
+            List() = default;
+            List( List const& other ) = delete;
+            List( List&& other ) = delete;
+            List& operator=( List const& other ) = delete;
+            List& operator=( List && other ) = delete;
+
+            // add node into the tree
+            void add( token_t token ) noexcept;
+
+            // getter for the head pointer
+            Node* get_head() const noexcept { return m_ptr_root; }
+
+           
+
+        private:
+            Node* m_ptr_root {nullptr};
+    };
+
 
 } // end main namespace 

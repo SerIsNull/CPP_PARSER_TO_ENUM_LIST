@@ -8,7 +8,7 @@
 	project( parser_to_enum_list
 		 DESCRIPTION "This parser for parsing to the enumeration list"
 	 	 VERSION     0.0.0.1
-		 LANGUAGES   CXX	 
+		 LANGUAGES   CXX
 	)
 
 # find all the necessary components for successfull building

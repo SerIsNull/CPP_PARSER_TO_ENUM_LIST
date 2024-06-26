@@ -32,7 +32,9 @@
 # set output directory
 	set_target_properties( test_parser
 	               	       PROPERTIES
-		       	       RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+		       	           RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+                           CXX_STANDARD 20
+                           CXX_STANDARD_REQUIRED ON
 	)
 
 # add test into the ctest
