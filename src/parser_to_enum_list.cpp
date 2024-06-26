@@ -10,7 +10,7 @@ Lib_parser::token_t Lib_parser::Tokens_stream::get() noexcept {
     while( m_ss.get(ch) and ch == '\t' )
         nested_lvl++;
 
-    while( !m_ss.eof() )
+    if( !m_ss.eof() )
         m_ss.putback(ch);
 
     // find data for token
@@ -59,4 +59,22 @@ void Lib_parser::List::add( Lib_parser::token_t token ) noexcept {
     else
         ptr_prev->m_ptr_down = ptr_next;
 
+}
+
+Lib_parser::List::~List() {
+    if( m_ptr_root ) {
+        // go to the Last Node
+        while( m_ptr_root ) {
+            while( m_ptr_root->m_ptr_right ) m_ptr_root = m_ptr_root->m_ptr_right;
+            while( m_ptr_root->m_ptr_down ) m_ptr_root = m_ptr_root->m_ptr_down;
+
+            if( m_ptr_root->m_ptr_right == nullptr and m_ptr_root->m_ptr_down == nullptr ) break;
+        }
+        // remove all from end
+        while( m_ptr_root ) {
+
+            Node* ptr_delete { m_ptr_root };
+            m_ptr_root = m_ptr_root->m_ptr_up;
+        }
+    }
 }

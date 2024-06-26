@@ -56,8 +56,9 @@ namespace Lib_parser {
 
             // getter for the head pointer
             Node* get_head() const noexcept { return m_ptr_root; }
-
-           
+            
+            // delete all teh Nodes
+            ~List();
 
         private:
             Node* m_ptr_root {nullptr};

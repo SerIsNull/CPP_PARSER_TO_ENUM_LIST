@@ -1,5 +1,11 @@
 # This CMakeLists.txt describes the building some tests for the parser
 
+    project( tester
+             VERSION 0.0.0.2
+             DESCRIPTION "This is tests for testing Lib_parser"
+             LANGUAGES CXX
+    )
+
 # set sources files for the tests
 	set( SOURCES
 	     parser_to_enum_list.cpp
@@ -38,9 +44,13 @@
 	)
 
 # add test into the ctest
-	add_test( test_parser 
-		  COMMAND ${CMAKE_BINARY_DIR}/bin/test_parser
+    add_test( NAME tests_lib_parser
+              COMMAND ${CMAKE_BINARY_DIR}/bin/test_parser
 	)
-	
-
+# add autorun test
+    add_custom_command( TARGET test_parser POST_BUILD
+                        COMMAND ${CMAKE_CTEST_COMMAND} -V --output-on-failure
+                        WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+                        VERBATIM
+    )
 

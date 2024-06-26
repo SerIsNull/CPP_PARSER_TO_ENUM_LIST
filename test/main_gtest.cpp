@@ -12,7 +12,7 @@ using TokensStreamTest = parser_test::TokensStreamTest;
 
 		tokens_stream.set_buffer(m_source_data);
 
-		decltype(m_valid_tokens)::size_type cnt_tokens {};
+		decltype(m_valid_tokens)::size_type cnt_tokens {0};
 		while( tokens_stream ) {
 			tokens_stream.get();
 			cnt_tokens++;
