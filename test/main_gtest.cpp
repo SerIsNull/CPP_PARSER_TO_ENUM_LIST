@@ -60,6 +60,18 @@ using ListTest = parser_test::ListTest;
 
 int main( int argc, char **argv ) {
 
+// Name: test case #0. Test List destrutor
+// Desc: this test for tesing destyructor in List type.
+// good result: Valgrind says that Errors 0
+// bad result : Valgrind find some leaks
+    {
+        Lib_parser::List ls;
+
+            ls.add({"12", "12"});
+
+            ls.add({"13", "13"});
+    }
+
         ::testing::InitGoogleTest(&argc, argv );
 
 return RUN_ALL_TESTS();
