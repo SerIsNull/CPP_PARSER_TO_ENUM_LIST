@@ -33,8 +33,15 @@
 
                 Lib_parser::Node* get_next_node( Lib_parser::List const& );
 
-            private:
-                using TokensStreamTest::m_source_data;
+        };
+
+        // 3. Fixture for testing the type "Number_enumerator"
+        class NumberEnumeratorTest : public ListTest{
+        
+            protected:
+                NumberEnumeratorTest();
+                Lib_parser::List ls_nodes;
+                std::array<Lib_parser::token_t,8> m_valid_enum_nodes;
         };
 
 	} // end namespace parser_test

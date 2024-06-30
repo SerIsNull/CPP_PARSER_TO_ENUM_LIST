@@ -66,7 +66,7 @@
 
 # after all these things we need to autorun all tests
     add_custom_command( TARGET test_parser POST_BUILD
-                        COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
+                        COMMAND ${CMAKE_CTEST_COMMAND} --V --output-on-failure
                         WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
                         VERBATIM
     )
